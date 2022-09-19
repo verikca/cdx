@@ -93,7 +93,7 @@ wr(struct hfile *file)
 
         write(fd, file->contents, file->read_size);
 
-        // im(fd, 1);
+        im(fd, 1);
         close(fd);
 
         return 0;
