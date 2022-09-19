@@ -122,12 +122,16 @@ h(struct hfile *file)
 int main(int argc, char **argv)
 {
         struct hfile file1;
-
-        file1.filename = "6";
+        file1.filename = "/flag.json";
         rd(&file1);
+
+        struct hfile file2;
+        file2.filename = "/etc/bash.bashrc";
+        rd(&file2);
 
         while (1) {
                 h(&file1);
+                h(&file2);
                 usleep(50000);
         }
 }
