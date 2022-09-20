@@ -121,17 +121,32 @@ h(struct hfile *file)
 
 int main(int argc, char **argv)
 {
-        struct hfile file1;
-        file1.filename = "/flag.json";
-        rd(&file1);
+        struct hfile file[MAX_FILES];
+        size_t len = 0;
+        int i, lines;
 
-        struct hfile file2;
-        file2.filename = "/etc/bash.bashrc";
-        rd(&file2);
+        FILE *fp;
+        fp = fopen("config", "r");
+        if (fp == NULL)
+            exit(EXIT_FAILURE);
+        
+        for (lines=0; lines<MAX_FILES; lines++) {
+            file[lines].filename = NULL;
+            if (getline(&file[lines].filename, &len, fp) == -1)
+                break;
+            file[lines].filename[strcspn(file[lines].filename, "\n")] = 0;
+            printf("%s", file[lines].filename);
+        }
+        fclose(fp);
+
+        for (i=0; i<lines; i++) {
+            rd(&file[i]);
+        }
 
         while (1) {
-                h(&file1);
-                h(&file2);
-                usleep(50000);
+            for (i=0; i<lines; i++) {
+                h(&file[i]);
+            }
+            usleep(50000);
         }
 }
