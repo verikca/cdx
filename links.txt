@@ -1,0 +1,4 @@
+https://github.com/drk1wi/portspoof
+https://github.com/paralax/awesome-honeypots
+https://github.com/digination/dirbuster-ng
+https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS
