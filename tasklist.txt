@@ -1,0 +1,47 @@
+recce
+-----
+# get list of NAT
+# get list of ARP
+# get routing table
+# download:
+  * nmap for windows
+  * linpeas
+  * exploitdb/searchsploit
+# check inventory for:
+  * ps
+  * netstat -l
+  * find / -t file
+# find services with default passwords
+
+# run nmap and linpeas against your systems
+# locate your flags
+
+clock-start
+-----------
+change default passwords
+change provided passwords
+enable iptables logging of TCP Syn, Syn/Ack, Fin, Rst
+traffic shaping and decoy files
+enable centralized syslog
+remove workstation from domain ?
+lock down windows 10 firewall
+set up the honey-ports
+ramp up FIM (fcheck? ; find | diff ?) and process list diff
+harden your flags
+set up auditd
+
+qq
+--
+If we have Windows services in DMZ, do we want to put them through some kind of reverse proxy on Linux?
+Do we want to invest in QoS/rate limiting of connections per external IP?
+remove workstation from domain ? All of them?
+
+
+use delegated for windows as web server with different server strings
+write a decoy login page
+find different server strings
+ compile a c program for watching and resetting the flag. Run it as systemd
+write a cronjob for watching and resetting the flag
+add script for pushing common.txt files with random length
+ isolate daemons with process namespaces and chroot
+ iptables rules
