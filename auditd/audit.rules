@@ -1,0 +1,10 @@
+-D
+-b 524288
+-f 0
+-e 1
+-a exit,always -F arch=b32 -S kill -k PROC
+-a exit,always -F arch=b64 -S kill -k PROC
+-a exit,always -F arch=b32 -S ptrace -k PROC
+-a exit,always -F arch=b64 -S ptrace -k PROC
+-a exit,always -F arch=b32 -S execve -k EXEC
+-a exit,always -F arch=b64 -S execve -k EXEC
