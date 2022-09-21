@@ -1,0 +1,16 @@
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -i lo -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+-A INPUT -s 192.168.0.0/16 -j ACCEPT
+-A INPUT -m set --match-set block dst -j LOG --log-prefix INPUT-block-list
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p tcp -m statistic --mode random --probability 0.70000000019 -j DROP
+-A OUTPUT -o lo -j ACCEPT
+-A OUTPUT -d 192.168.0.0/16 -j ACCEPT
+-A OUTPUT -m set --match-set block dst -j LOG --log-prefix OUTPUT-block-list
+-A OUTPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A OUTPUT -j SET --add-set block dst
+COMMIT
