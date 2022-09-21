@@ -1,0 +1,1 @@
+* * * * *   root    lsattr /root/flag.txt | grep -q -e "----i---------e---" || chattr +i /root/flag.txt
