@@ -9,6 +9,7 @@
 #include <linux/fs.h>
 
 #define MAX_BYTES       262144
+#define MAX_FILES       10
 
 struct hfile {
         char    *filename;
